@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Rat Fit</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/picker.min.css">
+    <link rel="stylesheet" href="./css/datepicker.min.css">
+    <link rel="stylesheet" href="./css/ratfit.css">
+</head>
+
+<body>
+    <div id="container">
+        <div id="sched-page">
+            <div id="sched-head-bar" class="row py-2">
+                <div id="head-calendar" class="col-auto ml-2">
+                    <div class="w-100" id="date-button" data-toggle="datepicker">
+                        123
+                    </div>
+                    <div class="w-100">
+                        <i class="bi bi-calendar2-week"></i>
+                    </div>
+
+                </div>
+
+                <div id="head-date" class="col">4月13日</div>
+            </div>
+            <div id="sched-switch-bar" class="row py-1">
+                <div type="button" id="train-page-btn" class="selected">训练</div>
+                <div type="button" id="meal-page-btn">饮食</div>
+            </div>
+            <div id="sched-center-body" class="row">
+                <div class="col h-100">
+                    <div id="train-body" class="h-100">
+                        <div class="item-list col px-3" id="train-list">
+
+                        </div>
+                        <div type="button" id="add-train-button" class="add-button">
+                            <i class="bi bi-plus"></i>
+                        </div>
+                    </div>
+                    <div id="meal-body" class="h-100" style="display: none">
+                        <div id="meal-show-body">
+                            <div id="breakfast-body">
+                                <div class="total-energy row py-1">
+                                    <div class="col ml-3">
+                                        早餐总计
+                                    </div>
+                                    <div class="col-auto mr-3">
+                                        <span>0</span>千焦
+                                    </div>
+                                </div>
+                                <div id="breakfast-list" class="item-list col px-3 pb-3">
+
+                                </div>
+                            </div>
+                            <div id="lunch-body" style="display: none">
+                                <div class="total-energy row py-1">
+                                    <div class="col ml-3">
+                                        午餐总计
+                                    </div>
+                                    <div class="col-auto mr-3">
+                                        <span>0</span>千焦
+                                    </div>
+                                </div>
+                                <div id="lunch-list" class="item-list col px-3 pb-3">
+                                </div>
+                            </div>
+                            <div id="dinner-body" style="display: none">
+                                <div class="total-energy row py-1">
+                                    <div class="col ml-3">
+                                        晚餐总计
+                                    </div>
+                                    <div class="col-auto mr-3">
+                                        <span>0</span>千焦
+                                    </div>
+                                </div>
+                                <div id="dinner-list" class="item-list col px-3 pb-3">
+                                </div>
+                            </div>
+                            <div type="button" class="add-button" id="add-meal-button">
+                                <i class="bi bi-plus"></i>
+                            </div>
+                        </div>
+
+                        <div id="meal-switch-bar" class="py-2">
+                            <div type="button" id="breakfast-page-btn" class="selected">早</div>
+                            <div type="button" id="lunch-page-btn">午</div>
+                            <div type="button" id="dinner-page-btn">晚</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="search-page" style="display: none">
+            <div id="search-bar" class="form-group row mb-0">
+                <div class="col input-group p-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="bi bi-search"></i>
+                        </span>
+                    </div>
+                    <input type="text" class="form-control" id="input-search">
+                    <div class="input-group-append">
+                        <div class="btn btn-outline-secondary" type="button" id="search-button">确定</div>
+                    </div>
+                </div>
+            </div>
+            <div id="search-result-list" class="px-3 pb-3">
+
+            </div>
+        </div>
+
+        <div id="video-page" style="display: none">
+            <div id="video-head-bar" class="row py-2">
+                <div type="button" id="video-back-btn" class="ml-2">
+                    <i class="bi bi-chevron-left"></i> 返回
+                </div>
+                <div type="button" id="favorite-button" class="mr-3">
+                    <i class="bi bi-star video-star"></i>
+                    <i class="bi bi-star-fill video-stared"></i>
+                </div>
+            </div>
+            <div id="video-body">
+                <div id="video-content"></div>
+            </div>
+            <div id="video-explain" class="p-3">
+                <div class="explain-item">
+                    <div id="explain-title">
+                        <h3>硬拉</h3>
+                    </div>
+                </div>
+                <hr>
+                <div class="explain-item">
+                    <h5>要点</h5>
+                    <ul>
+                        <li>要点1</li>
+                        <li>要点2</li>
+                    </ul>
+                    <h5>呼吸</h5>
+                    <ul>
+                        <li>呼吸方式</li>
+                    </ul>
+                    <h5>常见错误</h5>
+                    <ul>
+                        <li>错误1</li>
+                        <li>错误2</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="clock-page" style="display: none">
+            <div id="clock-switch-bar" class="py-2">
+                <div type="button" id="alarm-page-btn" class="selected"><i class="bi bi-alarm"></i> 闹钟</div>
+                <div type="button" id="stopwatch-page-btn"><i class="bi bi-hourglass-bottom"></i> 倒计时</div>
+            </div>
+            <div id="clock-center-body">
+                <div id="alarm-body" class="h-100">
+                    <div id="alarm-list" class="item-list px-3 pb-3">
+
+                    </div>
+                    <div type="button" id="add-alarm-button" class="add-button">
+                        <i class="bi bi-plus"></i>
+                    </div>
+                </div>
+                <div id="stopwatch-body" style="display: none">
+                    <div class="alert alert-success row" role="alert" id="timer-alert" style="display: none">
+                        <span>倒计时结束</span>
+                        <button type="button" class="btn btn-success ok">确定</button>
+                    </div>
+                    <div id="stopwatch-main">
+                        <div id="stopwatch-cotent">
+                            <div id="stopwatch-display" class="mt-5 mb-3">00:00</div>
+                            <div id="stopwatch-edit" class="js-inline-picker show"></div>
+                        </div>
+                    </div>
+                    <div id="stopwatch-buttons" class="row mt-5">
+                        <div id="timer-toggle-button" class="pause disabled">
+                            <i class="bi bi-play-fill" id="timer-play-icon"></i>
+                            <i class="bi bi-pause-fill" id="timer-pause-icon"></i>
+                        </div>
+                        <div id="timer-reset-button" class="disabled"><i class="bi bi-arrow-counterclockwise"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="user-page" style="display: none">
+            <div id="user-head-bar" class="row">
+                <div id="user-avatar" class="col-auto"><i class="bi bi-person-circle"></i></div>
+                <div id="user-name" class="col"><span>User Name
+                        <hr>
+                    </span></div>
+                <div id="user-set" class="col-auto">
+                    <span><i class="bi bi-nut"></i> 设置 <i class="bi bi-chevron-right"></i></span>
+                </div>
+            </div>
+            <div id="user-favorite" class="row">
+                <div class="col card mx-3 p-3">
+                    <div id="favorite-title" class="mb-2">
+                        我的收藏
+                    </div>
+                    <div id="favorite-list">
+                        <div class="row my-2">
+                            <div class="col-auto">
+                                <img>
+                            </div>
+                            <div class="col mx-2">
+                                <span>
+                                    视频1
+                                    <br>
+                                    <small>114分51秒</small>
+                                </span>
+                            </div>
+                            <div class="my-favorite-button col-auto stared">
+                                <i class="bi bi-star video-star"></i>
+                                <i class="bi bi-star-fill video-stared"></i>
+                            </div>
+                        </div>
+                        <div class="row my-2">
+                            <div class="col-auto">
+                                <img>
+                            </div>
+                            <div class="col mx-2">
+                                <span>
+                                    视频2
+                                    <br>
+                                    <small>114分51秒</small>
+                                </span>
+                            </div>
+                            <div class="my-favorite-button col-auto">
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        </div>
+                        <div class="row my-2">
+                            <div class="col-auto">
+                                <img>
+                            </div>
+                            <div class="col mx-2">
+                                <span>
+                                    视频3
+                                    <br>
+                                    <small>114分51秒</small>
+                                </span>
+                            </div>
+                            <div class="my-favorite-button col-auto">
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="bottom-bar" class="py-1">
+        <div type="button" class="text-center selected" data-page="#sched-page"><i class="bi bi-file-ruled-fill"></i><br>计划</div>
+        <div type="button" class="text-center" data-page="#search-page"><i class="bi bi-book-fill"></i><br>资料</div>
+        <div type="button" class="text-center" data-page="#clock-page"><i class="bi bi-clock-fill"></i><br>时间</div>
+        <div type="button" class="text-center" data-page="#user-page"><i class="bi bi-person-fill"></i><br>我</div>
+    </div>
+
+    <div class="modal fade full" id="editMealModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-auto">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                            </div>
+                            <div class="col text-center">
+                                <h5 class="modal-title">饮食</h5>
+                            </div>
+                            <div class="col-auto">
+                                <button type="button" class="btn btn-primary" id="input-meal-ok">确定</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <form autocomplete="off">
+                        <div class="form-group row">
+                            <label for="input-food" class="col-2 col-form-label">食物</label>
+                            <div class="col-10">
+                                <input type="text" class="form-control" id="input-food" name="title" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">质量</label>
+                            <div class="col input-group">
+                                <input type="number" class="form-control" name="weight">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">克</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">能量</label>
+                            <div class="col input-group">
+                                <input type="number" class="form-control" name="energy" required>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">千焦</span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade full" id="editTrainModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-auto">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                            </div>
+                            <div class="col text-center">
+                                <h5 class="modal-title">训练</h5>
+                            </div>
+                            <div class="col-auto">
+                                <button type="button" class="btn btn-primary" id="input-train-ok">确定</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <form autocomplete="off">
+                        <div class="form-group row">
+                            <label for="input-title" class="col-2 col-form-label">项目</label>
+                            <div class="col-10">
+                                <input type="text" class="form-control" id="input-title" name="title" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="checkbox" id="input-weight-checkbox">
+                                    </div>
+                                    <span class="input-group-text">重量</span>
+                                </div>
+                                <input type="number" class="form-control" id="input-weight" name="weight" disabled required>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">千克</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="checkbox" id="input-number-checkbox">
+                                    </div>
+                                </div>
+                                <input type="number" class="form-control input-number" name="group" disabled required>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">组</span>
+                                </div>
+                                <input type="number" class="form-control input-number" name="count" disabled required>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">个</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col">
+                                <label for="input-note">备注</label>
+                                <textarea class="form-control" id="input-note" name="note" rows="3"></textarea>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade full" id="editAlarmModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-auto">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                            </div>
+                            <div class="col text-center">
+                                <h5 class="modal-title">闹钟</h5>
+                            </div>
+                            <div class="col-auto">
+                                <button type="button" class="btn btn-primary" id="input-alarm-ok">确定</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <form autocomplete="off">
+                        <div class="row">
+                            <div class="col">
+                                <div id="alarm-edit-picker"></div>
+                            </div>
+                        </div>
+                        <div class="form-row justify-content-around mt-3">
+                            <div class="form-group col-auto">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="alarm-week-0">
+                                    <label class="form-check-label" for="alarm-week-0">日</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-auto">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="alarm-week-1">
+                                    <label class="form-check-label" for="alarm-week-1">一</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-auto">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="alarm-week-2">
+                                    <label class="form-check-label" for="alarm-week-2">二</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-auto">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="alarm-week-3">
+                                    <label class="form-check-label" for="alarm-week-3">三</label>
+                                </div>
+                            </div>
+                            <div class="col-12"></div>
+                            <div class="form-group col-auto">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="alarm-week-4">
+                                    <label class="form-check-label" for="alarm-week-4">四</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-auto">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="alarm-week-5">
+                                    <label class="form-check-label" for="alarm-week-5">五</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-auto">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="alarm-week-6">
+                                    <label class="form-check-label" for="alarm-week-6">六</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row mt-3">
+                            <label for="alarm-repeat" class="col-auto col-form-label mr-1">重复</label>
+                            <div class="col-4 input-group">
+                                <input type="number" class="form-control" id="alarm-repeat" name="rep" value="3">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">次</span>
+                                </div>
+                            </div>
+                            <div class="col"></div>
+                            <label for="alarm-interval" class="col-auto col-form-label mr-1">间隔</label>
+                            <div class="col-4 input-group">
+                                <input type="number" class="form-control" id="alarm-interval" name="inr" value="10">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">分钟</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="delAlartModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h3>确定删除吗？</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary cancel">取消</button>
+                    <button type="button" class="btn btn-danger ok">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./js/popper.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/picker.min.js"></script>
+    <script type="text/javascript" src="./js/datepicker.min.js"></script>
+    <script type="text/javascript" src="./js/ratfit.js"></script>
+
+</body>
+
+</html>

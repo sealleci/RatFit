@@ -1,0 +1,430 @@
+/*
+color schem: 
+115,216,202
+102,152,187
+127,122,163
+224,180,207
+220,213,221
+*/
+
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--light);
+}
+
+.col,
+[class*='col-'] {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+}
+
+#sched-head-bar,
+#sched-switch-bar,
+#clock-switch-bar,
+#meal-switch-bar,
+#bottom-bar,
+#search-bar {
+    display: flex;
+    flex-direction: row;
+}
+
+#sched-switch-bar,
+#clock-switch-bar,
+#meal-switch-bar,
+#bottom-bar {
+    justify-content: space-around;
+}
+
+#sched-head-bar {
+    background-image: linear-gradient(45deg, dodgerblue 0%, violet 100%);
+    /* background-color: dodgerblue; */
+    color: white;
+}
+
+#stopwatch-main,
+#head-date,
+#search-box {
+    text-align: center;
+}
+
+#bottom-bar {
+    position: absolute;
+    bottom: 0;
+    background-color: white;
+    border-top: 1px solid #aaa;
+    left: 0;
+    right: 0;
+}
+
+#bottom-bar {
+    color: gray;
+}
+
+#bottom-bar>.selected {
+    background: -webkit-linear-gradient(15deg, dodgerblue 25%, violet 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    /* color: dodgerblue; */
+}
+
+#sched-switch-bar {
+    background-color: white;
+    color: gray;
+    border-bottom: 1px solid #aaa;
+    position: relative;
+    z-index: 100;
+}
+
+#sched-switch-bar .selected {
+    color: dodgerblue;
+    /* background: -webkit-linear-gradient(0deg, dodgerblue 25%, violet 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; */
+    font-weight: bold;
+}
+
+#clock-switch-bar {
+    background-color: white;
+    border-bottom: 1px solid #aaa;
+    position: relative;
+    z-index: 100;
+}
+
+#clock-switch-bar .selected {
+    /* color: dodgerblue; */
+    background: -webkit-linear-gradient(15deg, dodgerblue 40%, violet 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+#meal-switch-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: var(--gray);
+}
+
+#meal-switch-bar .selected {
+    color: white;
+    /* background-color: dodgerblue; */
+    background-image: linear-gradient(45deg, dodgerblue 0%, violet 100%);
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#video-head-bar {
+    background-image: linear-gradient(45deg, dodgerblue 0%, violet 100%);
+    /* background-color: dodgerblue; */
+    color: white;
+    justify-content: space-between;
+}
+
+#meal-edit-head-bar {
+    justify-content: space-between;
+}
+
+.list-item,
+.result-item,
+.favorite-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.item-buttons {
+    justify-content: space-around;
+}
+
+#stopwatch-buttons {
+    justify-content: space-around;
+}
+
+#bottom-bar>div {
+    font-size: small;
+}
+
+.total-energy {
+    font-size: 20px;
+}
+
+.total-energy span {
+    color: dodgerblue;
+    font-weight: 700;
+}
+
+#bottom-bar>div>i {
+    font-size: large;
+}
+
+#sched-center-body {
+    height: calc(100vh - 53.6px - 40px - 32px);
+}
+
+.add-button {
+    font-size: 40px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+}
+
+.add-button>i {
+    pointer-events: all;
+}
+
+.add-button>i::before {
+    color: white;
+    font-weight: bolder;
+    border-radius: 50%;
+    /* height: 40px;
+    width: 40px; */
+    /* background-color: dodgerblue; */
+    background: -webkit-linear-gradient(45deg, dodgerblue 0%, violet 100%);
+}
+
+#meal-show-body {
+    position: relative;
+    height: calc(100vh - 53.6px - 40px - 32px - 32px);
+}
+
+#breakfast-body {
+    height: calc(100vh - 54.6px - 40px - 32px - 40px);
+}
+
+#breakfast-body,
+#train-body {
+    overflow-x: auto;
+}
+
+.full .modal-dialog {
+    margin: 0;
+}
+
+.full .modal-content {
+    height: 100vh;
+    border-radius: 0;
+}
+
+#user-head-bar {
+    margin-top: 40px;
+    margin-left: 30px;
+}
+
+#user-avatar {
+    font-size: 60px;
+}
+
+#user-name>span {
+    background-image: -webkit-linear-gradient(45deg, dodgerblue 0%, violet 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: absolute;
+    bottom: 5px;
+    left: 15px;
+    right: 30px;
+    font-size: 25px;
+}
+
+#user-name hr {
+    margin-top: 10px;
+    /* background-color: dodgerblue; */
+    height: 5px;
+    background: -webkit-linear-gradient(45deg, dodgerblue 0%, violet 100%);
+    /* border: 3px solid dodgerblue; */
+    border-radius: 4px;
+}
+
+#user-set span {
+    display: block;
+    margin-top: 30px;
+    margin-right: 25px;
+    font-size: 16px;
+}
+
+#favorite-list img,
+.thumbnail {
+    width: 112px;
+    height: 63px;
+    border-radius: 8px;
+    background-color: var(--gray-dark);
+}
+
+#favorite-list .col,
+#favorite-list .col-auto {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.my-favorite-button {
+    font-size: 22px;
+}
+
+#search-bar .input-group-text {
+    border: 1px solid #ced4da;
+    border-right: 0;
+    background-color: #fff;
+}
+
+#search-bar input {
+    border-left: 0;
+}
+
+#search-result-list {
+    height: calc(100vh - 53.6px - 70px);
+    overflow-y: auto;
+}
+
+#stopwatch-cotent {
+    position: relative;
+    text-align: center;
+    border: 1px solid var(--gary);
+    width: 60vw;
+    border-radius: 10px;
+    font-size: 50px;
+    overflow: hidden;
+    margin: 20px auto;
+}
+
+#timer-reset-button,
+#timer-toggle-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* border: 3px solid dodgerblue; */
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    font-size: 40px;
+    color: white;
+    background: -webkit-linear-gradient(45deg, dodgerblue 0%, violet 100%);
+    font-weight: bold;
+}
+
+#timer-reset-button.disabled,
+#timer-toggle-button.disabled {
+    color: rgb(195, 223, 250);
+    background: #888;
+    opacity: 0.65;
+    /* border: 3px solid var(--gray); */
+}
+
+#stopwatch-edit {
+    opacity: 0;
+}
+
+#stopwatch-edit.show {
+    opacity: 1;
+}
+
+.pause>#timer-pause-icon {
+    display: none;
+}
+
+:not(.pause)>#timer-play-icon {
+    display: none;
+}
+
+#clock-center-body {
+    position: relative;
+    height: calc(100vh - 53.6px - 40px);
+}
+
+#alarm-body {
+    overflow-y: auto;
+}
+
+#video-content {
+    width: 100vw;
+    height: 56.25vw;
+    background-color: var(--gray-dark);
+}
+
+#date-button {
+    position: absolute;
+    opacity: 0;
+    width: 16px;
+    height: 24px;
+}
+
+.control-buttons {
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-top: 0;
+    border-radius: 0 0 0.25rem 0.25rem;
+    padding: 8px 15px;
+    font-size: 22px;
+}
+
+.control-buttons .bi-pencil-square {
+    color: dodgerblue;
+}
+
+.control-buttons .bi-trash {
+    color: var(--red);
+}
+
+.control-buttons {
+    display: none;
+}
+
+.control-buttons.show {
+    display: block;
+}
+
+#train-list {
+    padding-bottom: 60px;
+}
+
+.stared>.video-star {
+    display: none;
+}
+
+:not(.stared)>.video-stared {
+    display: none;
+}
+
+#video-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    z-index: 100;
+}
+
+.my-favorite-button>i {
+    color: orange;
+}
+
+#timer-alert {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
